@@ -1,6 +1,4 @@
-h2 {
-  color: blueviolet;
-}
-home-page h2 {
-  color: yellowgreen;
-}
+home-page h3 {
+  text-align: center;
+  color: rgb(31, 27, 39);
+} 

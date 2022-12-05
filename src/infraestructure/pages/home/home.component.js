@@ -5,14 +5,11 @@ export class HomeComponent extends HTMLElement {
     constructor () {
       super();
       // parametros del componente
-      this.name="John";
-      this.surname="Moon";
-      this.myColor;
-      // otros parametros
-      this.numColumns = 8;
+      this.name="Anonimus";
+      this.surname="Player";
     }
     static get observerAttributes(){ // lista de atributos a observar
-      return ['name', 'surname', 'my-color'];
+      return ['name', 'surname'];
     }
     attributesChangeCallback(nameAtr, oldValue, newValue){ // atributos que podemos controlar
       switch(nameAtr) {
@@ -22,21 +19,15 @@ export class HomeComponent extends HTMLElement {
         case "surname":
           this.surname = newValue;
           break;
-        case "my-color":
-          this.myColor = newValue;
-          break;
       }
     }
     connectedCallback() { // Cuando se carga el componente, atributos modificables double binding
       
       // añadiendole cosas
-      console.log("componente cargado");
-      this.id = "elplomillazo";
-      this.innerHTML = homeHTML + `<br>Hello ${this.name} ${this.surname}`;
-      this.style.color = this.myColor || "yellow";
-      this.style.fontSize = `${this.numColumns}`;
-
-      console.log("numero de columnas: " + this.numColumns);       
+      // console.log("componente cargado");
+      this.id = "homePage";
+      this.innerHTML = homeHTML + `<br><h3>Hello ${this.name} ${this.surname}</h3>`;
+      
     }
     
     // disconnectedCallback() {
