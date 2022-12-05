@@ -37,6 +37,7 @@ h1 {
   display: none !important;
 }
 
+/* pwa install button */
 #installContainer {
   position: absolute;
   bottom: 1em;
