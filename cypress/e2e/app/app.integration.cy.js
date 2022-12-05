@@ -17,7 +17,6 @@ describe('Router Component Testing: ', () => {
     it('Navegamos al Home page', () => {
         cy.get('[data-target="home"]').click();
         cy.contains('Home');
-        cy.contains('Nick Name');
     });
     it('Cerramos el menu', () => {
         cy.get('#menu-toggler').click();
@@ -53,5 +52,19 @@ describe('Router Component Testing: ', () => {
     it('Cerramos el menu', () => {
         cy.get('#menu-toggler').click();
         cy.should('not.be.checked');
+    });
+    // form
+    it('Nos dirigimos al home, esta prueba es importante hacerla sin llamar al gamePage, al final de la validación del formulario, sino no veremos los resultados en pantalla', () => {
+        cy.get('[data-target="home"]').click();
+        cy.contains('Home');
+    });
+    it('Cerramos el menu', () => {
+        cy.get('#menu-toggler').click();
+        cy.should('not.be.checked');
+    });
+    it('Nos focalizamos en el input name, tiene dos elementos el input[type=text] y el button[type=submit]', () => {
+        cy.get('#nickName').should('contain', '').and('have.attr', 'required').and('include', 'required');
+        cy.get('button[type=submit]').should('contain', 'Let me Play');
+
     });
 });

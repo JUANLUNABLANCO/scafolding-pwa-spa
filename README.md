@@ -256,12 +256,20 @@ tendremos las siguientes ramas
 
   
 # PRIMERAS PRUEBAS DE ROUTING
+seguiremos TDD, creando primero los tests,que fallarán, luego implementaremos el código, hasta que pase los tests y después refactorizaremos, subiendo el resultado a la feature/correspondiente
+usaremos cypress, por su potencia, sencillez y su interfaz gráfica.
 
+solicitando un pull request a develop, en la cual se deberían realizar otros tests de integración o e2e
 
+y por último en main se deben pasar los tests atacando la app en producción, esto no lo implementaremos de momento,
 
-# PRUEBAS DE STORAGE
+Todo esto podría ser automatizado con CI/CD pipelines, ...AZURE DEVOPS, o cualquier otro, de momento lo estamos realizando a mano.
 
-# PRUEBAS DE PWA
+se debería probar: 
+  1. PRUEBAS SOBRE PAGES Y COMPONENTS 
+  2. PRUEBAS DE STORAGE
+  3. PRUEBAS DE PWA
+  
 
 
 
