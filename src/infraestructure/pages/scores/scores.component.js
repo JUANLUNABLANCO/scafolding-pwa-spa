@@ -1,7 +1,7 @@
-import postsHTML from './posts.component.html';
-import postsCSS from './posts.component.css';
+import scoresHTML from './scores.component.html';
+import scoresCSS from './scores.component.css';
 
-export class PostsComponent extends HTMLElement {
+export class ScoresComponent extends HTMLElement {
     constructor () {
       super();
       // this.content = this.createPosts();
@@ -52,7 +52,7 @@ export class PostsComponent extends HTMLElement {
     createPosts = () => {
       console.log("in createPosts");
       const divElement = document.createElement("div");
-      divElement.innerHTML = postsHTML;
+      divElement.innerHTML = scoresHTML;
     
       const postsElement = divElement.querySelector("#posts");
       const totalPosts = divElement.querySelector('#total');
@@ -63,7 +63,7 @@ export class PostsComponent extends HTMLElement {
       posts.forEach((post) => {
         postsElement.innerHTML += `
           <li class="list-group-item border-light bg-dark text-white">
-          <h5>${post.title}</h5>
+          <h5>Scores ${post.title}</h5>
           <p>
           ${post.body}
           </p>
@@ -78,6 +78,7 @@ export class PostsComponent extends HTMLElement {
       
       // console.log(this.content);
       this.innerHTML = `
+      <h1>Scores</h1>
       <div><h2 class="text-center text-white display-4">Total Posts: <span id="total">6</span></h2>
 
       <ul class="list-group" id="posts" style="height: 70vh; overflow: auto">
@@ -146,5 +147,5 @@ export class PostsComponent extends HTMLElement {
 
     }
 }
-window.customElements.define("posts-page", PostsComponent);
+window.customElements.define("scores-page", ScoresComponent);
 

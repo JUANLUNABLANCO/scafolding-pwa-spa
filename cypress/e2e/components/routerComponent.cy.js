@@ -2,7 +2,8 @@
 
 describe('Router Component Testing: ', ()=>{
   beforeEach(()=>{
-    cy.visit('http://127.0.0.1:4200/#');
+    // npm run node:dev
+    cy.visit('http://127.0.0.1:8080/#');
   });
   it('Comprueba que se abre la app y que contiene la palabra Home', ()=>{
     // expect(true).to.equal(true);
@@ -17,8 +18,8 @@ describe('Router Component Testing: ', ()=>{
     cy.contains('Scores');
   });
   it('Navegamos entre las diferentes opciones del menu: Play page', ()=>{
-    cy.get('[data-target="play"]').click();
-    cy.contains('Play');
+    cy.get('[data-target="game"]').click();
+    cy.contains('Game');
   });
   it('Cerramos el menu', ()=>{
     cy.get('#menu-toggler').click();

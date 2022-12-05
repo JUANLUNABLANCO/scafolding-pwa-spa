@@ -175,15 +175,13 @@ La estructura de carpetas será lo más conveniente para satisfacer una Clean Ar
   Clean Architecture
   ./src
     |____ assets ./images ./icons ...
-    |____ app
-    |      |____ infraestructure
-    |      |     |____ components
-    |      |     |____ pages
-    |      |     |____ localStorage
-    |      |     |____ router
-    |      |____ domain
-    |            |____ serviceLocalStorage
-
+    |____ infraestructure
+    |     |____ components
+    |     |____ pages
+    |     |____ localStorage
+    |     |____ router
+    |____ domain
+    |     |____ services
     |____ main.css
     |____ index.html
     |____ main.js
