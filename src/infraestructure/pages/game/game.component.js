@@ -1,5 +1,5 @@
 import gameHTML from './game.component.html';
-import gameCSS from './game.component.css';
+import './game.component.css';
 
 export class GameComponent extends HTMLElement {
     constructor () {
