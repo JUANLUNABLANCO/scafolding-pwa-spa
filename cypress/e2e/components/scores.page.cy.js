@@ -10,9 +10,10 @@ describe('Router Component Testing: ', () => {
         cy.should('have.attr', 'checked').and('eq', 'checked');
     });
     it('Navegamos al Score-page, comprobamos que contiene un elemento visible con id"scoresPage"', () => {
-        cy.get('[data-target="score"]').click();
+        cy.get('[data-target="scores"]').click();
         cy.contains('Scores');
-        cy.get('.wrapper').should('to.be.visible').get('#scoresPage');
+        cy.get('figure').should('to.be.visible');
+        cy.get('#scoresPage');
 
     });
     it('Cerramos el menu', () => {
