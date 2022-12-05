@@ -3,16 +3,16 @@ import { NavigatorMenuComponent } from "./infraestructure/components/menu/menuNa
 import { router } from "./infraestructure/router/index.router";
 
 
-const init = ()=>{
-  // menu navigator
-  new NavigatorMenuComponent();
-  
-  // routing 
-  router(window.location.hash);
+const init = () => {
+    // menu navigator
+    new NavigatorMenuComponent();
 
-  window.addEventListener("hashchange", () => {
+    // routing 
     router(window.location.hash);
-  });
+
+    window.addEventListener("hashchange", () => {
+        router(window.location.hash);
+    });
 }
 
 window.addEventListener("load", init);

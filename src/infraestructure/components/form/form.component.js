@@ -36,7 +36,7 @@ export class FormComponent extends HTMLElement {
             this.isValid = true;
             // SCORES.setScore(nickNameValue, 0);
             // ROUTER.load('play');
-
+            // console.log(accessGame);
         }
     }
     setError = (element, message) => {
@@ -79,6 +79,9 @@ export class FormComponent extends HTMLElement {
         // console.log(MAXCHARNAMEFIELD, MINCHARNAMEFIELD);
         this.permitedChars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_';
 
+        this.form.addEventListener('mouseover', event => {
+            event.preventDefault();
+        })
 
         this.form.addEventListener('submit', event => {
             event.preventDefault();
