@@ -16,28 +16,33 @@ const router = (route) => {
     switch (route) {
         case "#/":
             {
+                console.log("in #/");
+                window.location.hash = '#/home';
+                break;
+            }
+        case "#/home":
+            {
+                console.log("in #/home");
                 const homeComponent = new HomeComponent();
                 return content.appendChild(homeComponent);
                 // break;
             }
-        case "#/home":
-            {
-                window.location.hash = '#/';
-                break;
-            }
         case "#/game":
             {
+                console.log("in #/game");
                 // si form validado accessGame = true
                 const gameComponent = new GameComponent();
                 return content.appendChild(gameComponent);
             }
         case "#/scores":
             {
+                console.log("in #/scores");
                 const scoresComponent = new ScoresComponent();
                 return content.appendChild(scoresComponent);
             }
         default:
             {
+                console.log("in #/default");
                 window.location.hash = '#/';
                 break;
             }

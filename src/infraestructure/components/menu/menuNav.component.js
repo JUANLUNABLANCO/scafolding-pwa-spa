@@ -1,5 +1,5 @@
 import menuNavHTML from './menuNav.component.html';
-import menuNavCSS from './menuNav.component.css';
+import './menuNav.component.css';
 
 export class NavigatorMenuComponent extends HTMLElement {
     constructor() {
@@ -18,18 +18,24 @@ export class NavigatorMenuComponent extends HTMLElement {
             linkDisabled.classList.add('not-active');
         }
     }
-    connectedCallback() { // Cuando se carga el componente, atributos modificables double binding
-        // añadiendole cosas
-        this.id = "menu-navigator";
+    render() {
         this.innerHTML = menuNavHTML;
-
-        this.setActiveLink(this.userIsLoged);
     }
 
-    // disconnectedCallback() {
-    // metodo que se ejecuta cuando el componente sea eliminado del document
-    // }
+    connectedCallback() { // Cuando se carga el componente, atributos modificables double binding
+            // añadiendole cosas
+            this.id = "menu-navigator";
+            this.render();
 
+            this.setActiveLink(this.userIsLoged);
+            document.addEventListener('menu-item-game-actived', () => {
+                this.userIsLoged = true;
+                this.setActiveLink(this.userIsLoged);
+            });
+        }
+        // disconnectedCallback() {
+        // metodo que se ejecuta cuando el componente sea eliminado del document
+        // }
 }
 // if ('customElements' in window) {
 // 	window.customElements.define("home-page", HomeComponent);

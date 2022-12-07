@@ -7,15 +7,25 @@ export class FormComponent extends HTMLElement {
         this.inputNickName;
         this.form;
         this.submit;
-        this.isValid = false;
+        this.isValid = 'false';
         this.MAXCHARNAMEFIELD = 8;
         this.MINCHARNAMEFIELD = 3;
         // console.log(MAXCHARNAMEFIELD, MINCHARNAMEFIELD);
         this.permitedChars;
 
     }
+    static get ObservedAttributes() {
+        return ['isValid'];
+    }
+    attributeChangeCallback(nameAttr, oldVal, newVal) {
+        switch (nameAttr) {
+            case 'isValid':
+                this.isValid = newVal;
+                break;
+        }
+    }
     validateInputs = () => {
-        this.isValid = false;
+        this.isValid = 'false';
         console.log('se está validando');
         const nickNameValue = this.inputNickName.value.trim();
         console.log(nickNameValue);
@@ -30,13 +40,11 @@ export class FormComponent extends HTMLElement {
             console.log(nickNameValue);
             this.setError(this.inputNickName, `Some Characters, not permited! only [a-z][A-z][_]`);
         } else {
+            this.setAttribute('isValid', this.isValid);
             alert('VALIDADO');
             this.setSuccess(this.inputNickName);
             // enviar datos to class Scores
-            this.isValid = true;
-            // SCORES.setScore(nickNameValue, 0);
-            // ROUTER.load('play');
-            // console.log(accessGame);
+            this.isValid = 'true';
         }
     }
     setError = (element, message) => {
@@ -68,38 +76,40 @@ export class FormComponent extends HTMLElement {
         return valid;
     }
     connectedCallback() { // Cuando se carga el componente, atributos modificables double binding
-        this.innerHTML = formHTML;
+            console.log('formulario conectado');
+            this.innerHTML = formHTML;
 
-        this.form = this.querySelector('#formName');
-        this.inputNickName = this.querySelector('#nickName');
-        this.submit = this.querySelector('#submitButton');
-        // console.log('form: ', form, inputNickName, submit);
-        this.MAXCHARNAMEFIELD = this.inputNickName.getAttribute('max');
-        this.MINCHARNAMEFIELD = this.inputNickName.getAttribute('min');
-        // console.log(MAXCHARNAMEFIELD, MINCHARNAMEFIELD);
-        this.permitedChars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_';
+            this.form = this.querySelector('#formName');
+            this.inputNickName = this.querySelector('#nickName');
+            this.submit = this.querySelector('#submitButton');
+            // console.log('form: ', form, inputNickName, submit);
+            this.MAXCHARNAMEFIELD = this.inputNickName.getAttribute('max');
+            this.MINCHARNAMEFIELD = this.inputNickName.getAttribute('min');
+            // console.log(MAXCHARNAMEFIELD, MINCHARNAMEFIELD);
+            this.permitedChars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_';
+            // para el tooltip
+            this.form.addEventListener('mouseover', event => {
+                        event.preventDefault();
+                    })
+                    // envio del formulario y validación
+            this.form.addEventListener('submit', event => {
+                event.preventDefault();
+                // console.log('Submit button clicked');
+                // validacion
+                this.validateInputs();
+                // result
+                console.log(this.isValid);
+                if (this.isValid == 'true') {
+                    // this.form = this.querySelector('#formName');
 
-        this.form.addEventListener('mouseover', event => {
-            event.preventDefault();
-        })
+                    document.dispatchEvent(new CustomEvent('access-permited'));
+                }
 
-        this.form.addEventListener('submit', event => {
-            event.preventDefault();
-            console.log('Submit button clicked');
-            // validacion
-            this.validateInputs();
-            // result
-            console.log(this.isValid);
-            return this.isValid;
-        });
-
-
-
-    }
-
-    // disconnectedCallback() {
-    // metodo que se ejecuta cuando el componente sea eliminado del document
-    // }
+            });
+        }
+        // disconnectedCallback() { // metodo que se ejecuta cuando el componente sea eliminado del document
+        //     this.form.removeEventListener();
+        // }
 
 }
 window.customElements.define("form-player", FormComponent);

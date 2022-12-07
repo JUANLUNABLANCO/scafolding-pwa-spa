@@ -3,31 +3,43 @@ import { NavigatorMenuComponent } from "./infraestructure/components/menu/menuNa
 import { router } from "./infraestructure/router/index.router";
 
 
+let userIsLoged = false;
+
 const init = () => {
-    // menu navigator
-    const navigation = new NavigatorMenuComponent();
+        console.log("##### INIT");
+        // menu navigator
+        new NavigatorMenuComponent();
+        // routing first time 
+        router(window.location.hash);
+        // routing when hash change
+        window.addEventListener("hashchange", () => {
+            const path = window.location.hash;
+            switch (path) {
+                case '#/game':
+                    if (userIsLoged) {
+                        router('#/game');
+                    }
+                    break;
+                default:
+                    router(path);
+            }
+        });
+
+        document.addEventListener('access-permited', () => {
+            // ### ACCESO AL JUEGO PERMITIDO
+            userIsLoged = true;
+            document.dispatchEvent(new CustomEvent('menu-item-game-actived'));
+
+            // ### logica del storage
 
 
-    // routing 
-    router(window.location.hash);
+            router('#/game');
+        });
+    }
+    // const notificar = function() {
+    //     alert("El contenido cambió");
+    // }
 
-    window.addEventListener("hashchange", (e) => {
-        e.preventDefault();
-        switch (window.location.hash) {
-            case '#/game':
-                if (navigation.userIsLoged) {
-                    console.log(user.isLoged)
-                    router('#/game');
-                } else {
-                    router('#/home');
-                }
-                break;
-            default:
-                router(window.location.hash);
-        }
-        // navigation.isLoged = true;
+// window.addEventListener("load", init);
 
-    });
-}
-
-window.addEventListener("load", init);
+document.addEventListener("DOMContentLoaded", init);

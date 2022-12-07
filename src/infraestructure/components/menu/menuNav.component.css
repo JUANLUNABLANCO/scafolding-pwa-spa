@@ -116,10 +116,6 @@
     top: -10px;
 }
 
-li.menu-item {
-    /* cursor: pointer !important; */
-}
-
 .menu-item:nth-child(1) a {
     transform: rotate(0deg);
 }
