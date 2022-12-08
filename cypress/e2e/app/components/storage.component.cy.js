@@ -20,6 +20,20 @@ describe('Form Component Unit Testing: ', () => {
     after(() => {
         ScoresService.clearAll();
     })
+    it('Hagamos un set de un user con sus puntos. {"Alfonso", 0 }. recuerda set retorna un user como este { nickName: "Alfonso", highScore: 0 }', () => {
+        // cuando un usuario se loguea se crea con 0 puntos para comprobar si existe
+        const userLoged = ScoresService.set("Alfonso", 0);
+        console.log('######### USER LOGED', userLoged);
+
+        const userInfoRetorned = { nickName: "Alfonso", highScore: 0 };
+        console.log('######### USER INFO SET', userInfoRetorned);
+
+        assert.deepEqual(userLoged, userInfoRetorned);
+
+        const userpoints = ScoresService.get('Alfonso');
+
+        assert.deepEqual(userInfoRetorned.highScore, userpoints);
+    });
     it('Introduzcamos datos en el localStorage y luego los recuperamos antes de nada vaciemos el local storage', () => {
 
         saveItemsFromList(initialListOfScores); // rellenamos

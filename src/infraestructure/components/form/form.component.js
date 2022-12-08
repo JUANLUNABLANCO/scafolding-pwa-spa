@@ -111,10 +111,10 @@ export class FormComponent extends HTMLElement {
                         nickName: this.nickNameValue,
                         highScore: 0
                     }
-                    const result = ScoresService.set(this.userLoged.nickName, this.userLoged.points);
-                    console.log('RESULT: ', result);
+                    const user = ScoresService.set(this.userLoged.nickName, this.userLoged.highScore);
+                    console.log('USER: ', user);
 
-                    this.userLoged = {...result };
+                    this.userLoged = user.nickName;
                     // ver listado de usuarios y si no está el nuevo se graba
 
                     console.log(this.userLoged);

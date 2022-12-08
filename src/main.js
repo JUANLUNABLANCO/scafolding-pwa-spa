@@ -10,20 +10,24 @@ const init = () => {
         // console.log"##### INIT");
         // menu navigator
         new NavigatorMenuComponent();
-        // routing first time 
+        // routing first time
+        // window.location.hash;
         router(window.location.hash);
         // routing when hash change
-        window.addEventListener("hashchange", () => {
-            const path = window.location.hash;
-            switch (path) {
+        window.addEventListener("hashchange", (e) => {
+            // e.preventDefault();
+            console.log("########### PATH:  ", window.location.hash);
+            switch (window.location.hash) {
                 case '#/game':
                     if (userIsLoged) {
+                        // console.log("entra aquí");
                         router('#/game');
+                    } else {
+                        window.location.hash = '#/home';
                     }
                     break;
-                default:
-                    router(path);
             }
+            router(window.location.hash);
         });
 
         document.addEventListener('access-permited', () => {
@@ -31,7 +35,8 @@ const init = () => {
             userIsLoged = true;
             document.dispatchEvent(new CustomEvent('menu-item-game-actived'));
             // ### logica del storage, al entrar en Game()
-            router('#/game');
+
+            window.location.hash = '#/game';
         });
     }
     // const notificar = function() {

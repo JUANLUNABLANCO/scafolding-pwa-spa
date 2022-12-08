@@ -1,11 +1,12 @@
 // este test es la suma de todos los otros, ya que no tenemos una api o una bd
+import { ScoresService } from "../../../src/domain/services/storage.service.js";
 
-describe('Router Component Testing: ', () => {
+describe('ALL COMPONENTS AND LOGIC Testing: ', () => {
     beforeEach(() => {
         // npm run node:dev
         cy.visit('http://127.0.0.1:8080/#');
     });
-    // menu
+    // ######## MENU
     it('Abrimos el menu', () => {
         cy.get('#menu-toggler').click();
         cy.should('have.attr', 'checked').and('eq', 'checked');
@@ -22,7 +23,8 @@ describe('Router Component Testing: ', () => {
         cy.get('#menu-toggler').click();
         cy.should('not.be.checked');
     });
-    // game
+
+    // ######### GAME
     it('Abrimos el menu', () => {
         cy.get('#menu-toggler').click();
         cy.should('have.attr', 'checked').and('eq', 'checked');
@@ -37,7 +39,8 @@ describe('Router Component Testing: ', () => {
         cy.get('#menu-toggler').click();
         cy.should('not.be.checked');
     });
-    // scores
+
+    // ######### SCORES
     it('Abrimos el menu', () => {
         cy.get('#menu-toggler').click();
         cy.should('have.attr', 'checked').and('eq', 'checked');
@@ -53,7 +56,8 @@ describe('Router Component Testing: ', () => {
         cy.get('#menu-toggler').click();
         cy.should('not.be.checked');
     });
-    // form UI
+
+    // ############ form UI
     it('Nos dirigimos al home, esta prueba es importante hacerla sin llamar al gamePage, al final de la validación del formulario, sino no veremos los resultados en pantalla', () => {
         cy.get('[data-target="home"]').click();
         cy.contains('Home');
@@ -67,22 +71,30 @@ describe('Router Component Testing: ', () => {
         cy.get('button[type=submit]').should('contain', 'Let me Play');
 
     });
-    // form validation 
+
+    // ############## form validation 
     it('Nos dirigimos al home, esta prueba es importante hacerla sin llamar al ROUTER, es decir sin clickar los botones de  navegación de la UI, sino no veremos los resultados en pantalla', () => {
         cy.get('[data-target="home"]').click();
         cy.contains('Home');
     });
-    it('Nos focalizamos en el input name, para introducir datos ficticios correctos JMLB_Moon (datos permitidos), usando la interfaz UI, del formulario, comprobando que el mensaje de error está vacío y la clase que da color verde al borde del iput-control', () => {
-        cy.get('#nickName').should('contain', '').focus().type('JMLB_Moon');
-        cy.get('#submitButton').click();
-        cy.get('.error').first().should('contain', '');
-        cy.get('.input-control').first().should('have.class', 'success')
 
-    });
     it('Ahora introduciremos datos incorrectos JMLB/1234, comprobando el mensaje de error y la clase que da color rojo al borde del iput-control', () => {
         cy.get('#nickName').should('contain', '').focus().type('JMLB/1234');
         cy.get('#submitButton').click();
         cy.get('.error').first().should('contain', '[a-z][A-z][_]').and('be.visible');
         cy.get('.input-control').first().should('have.class', 'error');
     });
+
+    it('Nos focalizamos en el input name, para introducir datos ficticios correctos JMLB_Moon (datos permitidos), usando la interfaz UI, del formulario, Esto nos redirigirá automáticamente a la pagina game ', () => {
+        cy.get('#nickName').should('contain', '').focus().type('JMLB_Moon');
+        cy.get('.error').first().should('contain', '');
+        cy.get('#submitButton').click();
+        cy.contains('Game');
+        cy.contains('Start Game');
+        cy.get('#start').should('to.be.visible');
+
+    });
+
+    // ########## STORAGE
+
 });

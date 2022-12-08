@@ -29,6 +29,7 @@ const router = (route) => {
             }
         case "#/game":
             {
+                console.log('######## NEW PATH: ', window.location.hash);
                 // console.log("in #/game");
                 // si form validado accessGame = true
                 const gameComponent = new GameComponent();
