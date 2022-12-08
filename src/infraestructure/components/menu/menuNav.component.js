@@ -9,12 +9,12 @@ export class NavigatorMenuComponent extends HTMLElement {
     setActiveLink(active) {
         const itemDisabled = this.querySelector("[data-access-disabled='true']");
         const linkDisabled = itemDisabled.querySelector('a');
-        console.log(linkDisabled);
+        // console.log(linkDisabled);
         if (active) {
-            console.log('##########', active);
+            // console.log('##########', active);
             linkDisabled.classList.remove('not-active');
         } else {
-            console.log('##########', active);
+            // console.log('##########', active);
             linkDisabled.classList.add('not-active');
         }
     }

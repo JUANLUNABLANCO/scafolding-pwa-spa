@@ -4,9 +4,10 @@ import { router } from "./infraestructure/router/index.router";
 
 
 let userIsLoged = false;
+let currentUserLoged = "";
 
 const init = () => {
-        console.log("##### INIT");
+        // console.log"##### INIT");
         // menu navigator
         new NavigatorMenuComponent();
         // routing first time 
@@ -29,10 +30,7 @@ const init = () => {
             // ### ACCESO AL JUEGO PERMITIDO
             userIsLoged = true;
             document.dispatchEvent(new CustomEvent('menu-item-game-actived'));
-
-            // ### logica del storage
-
-
+            // ### logica del storage, al entrar en Game()
             router('#/game');
         });
     }

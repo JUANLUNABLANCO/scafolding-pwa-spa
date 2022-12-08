@@ -11,38 +11,38 @@ const router = (route) => {
     content.innerHTML = "";
 
 
-    console.log(route);
+    // console.log(route);
 
     switch (route) {
         case "#/":
             {
-                console.log("in #/");
+                // console.log("in #/");
                 window.location.hash = '#/home';
                 break;
             }
         case "#/home":
             {
-                console.log("in #/home");
+                // console.log("in #/home");
                 const homeComponent = new HomeComponent();
                 return content.appendChild(homeComponent);
                 // break;
             }
         case "#/game":
             {
-                console.log("in #/game");
+                // console.log("in #/game");
                 // si form validado accessGame = true
                 const gameComponent = new GameComponent();
                 return content.appendChild(gameComponent);
             }
         case "#/scores":
             {
-                console.log("in #/scores");
+                // console.log("in #/scores");
                 const scoresComponent = new ScoresComponent();
                 return content.appendChild(scoresComponent);
             }
         default:
             {
-                console.log("in #/default");
+                // console.log("in #/default");
                 window.location.hash = '#/';
                 break;
             }
