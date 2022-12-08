@@ -148,10 +148,10 @@ La estructura de carpetas será lo más conveniente para satisfacer una Clean Ar
 > touch main.js
 
   ./src
+    |____ assets / images, svg, icons
     |____ index.html
     |____ main.js
-    |____ css||sass
-            |____ main.css||main.css  
+    |____ main.css  
 
 # ARCHIVOS GENERADOS
 
@@ -174,20 +174,35 @@ La estructura de carpetas será lo más conveniente para satisfacer una Clean Ar
 
   Clean Architecture
   ./src
-    |____ assets ./images ./icons ...
-    |____ infraestructure
-    |     |____ components
-    |     |____ pages
-    |     |____ localStorage
-    |     |____ router
+    |____ assets
     |____ domain
     |     |____ services
-    |____ main.css
+    |____ infraestructure
+    |     |____ components
+    |     |     |____ AComponent
+    |     |           |____ AComponent.html
+    |     |           |____ AComponent.css
+    |     |           |____ AComponent.js
+    |     |            
+    |     |____ localStorage
+    |     |____ pages
+    |     |____ router
     |____ index.html
     |____ main.js
+    |____ main.css
 
-Al final NO vamos a utilizar sass, nuestro html no necesita tener enlaces al css ni al js, de eso se encarga webpack
-por eso la configuración, pruebalo:
+  # SASS ???
+    crea la carpeta sass dentro de ./src y crea un archivo main.scss
+  ## ventajas de usar sass
+    Reduce el tiempo para crear y mantener el CSS. Permite tener una organización modular de los estilos, lo cual es vital para proyectos grandes. Proporciona estructuras avanzadas propias de los lenguajes de programación, como variables, listas, funciones y estructuras de control. Permite generar distintos tipos de salida, comprimida, normal o minimizada, trabajando tanto en desarrollo como en producción, además se hace una forma muy fácil. Permite vigilar los ficheros, de tal manera que, si ha habido un cambio en la hoja de estilos, se regenera automáticamente (modo watch).
+    Tiene muy pocas dependencias, sobre todo la nueva versión, que es dart-sass. En las anteriores versiones se dependía de muchas librerías de Ruby y era un poco engorroso de instalar, pero con la nueva versión, la instalación es muy fácil.
+
+  ## para este proyecto no va a ser necesario
+  Existen muchas herramientas asociadas, muchas librerías hechas con Sass y una comunidad muy importante de usuarios.
+
+
+  Al final NO vamos a utilizar sass, nuestro html no necesita tener enlaces al css ni al js, de eso se encarga webpack
+  por eso la configuración, pruebalo:
   Sirve una pagina web a partir de los archivos de src, enlazándolos
 
   > npm run node:dev
@@ -209,20 +224,6 @@ por eso la configuración, pruebalo:
 
   --- main.js --- 
   import './component/template.html';
-
-
-
-# SASS ???
-crea la carpeta sass dentro de ./src y crea un archivo main.scss
-  ## ventajas de usar sass
-    Reduce el tiempo para crear y mantener el CSS. Permite tener una organización modular de los estilos, lo cual es vital para proyectos grandes. Proporciona estructuras avanzadas propias de los lenguajes de programación, como variables, listas, funciones y estructuras de control. Permite generar distintos tipos de salida, comprimida, normal o minimizada, trabajando tanto en desarrollo como en producción, además se hace una forma muy fácil. Permite vigilar los ficheros, de tal manera que, si ha habido un cambio en la hoja de estilos, se regenera automáticamente (modo watch).
-    Tiene muy pocas dependencias, sobre todo la nueva versión, que es dart-sass. En las anteriores versiones se dependía de muchas librerías de Ruby y era un poco engorroso de instalar, pero con la nueva versión, la instalación es muy fácil.
-
-  ## para este proyecto no va a ser necesario
-  
-
-Existen muchas herramientas asociadas, muchas librerías hechas con Sass y una comunidad muy importante de usuarios.
-
 
 # webpack dev server
 > npx webpack-dev-server // si webpack.config.js está en la raíz
@@ -269,7 +270,25 @@ se debería probar:
   1. PRUEBAS SOBRE PAGES Y COMPONENTS 
   2. PRUEBAS DE STORAGE
   3. PRUEBAS DE PWA
+  4. PRUEBAS DE INTEGRACION 
   
+## testing with cypress
+> npm run node:dev
+> npm run cypress:open
+
+![example2](snapshot-cypress.png)
+
+## check that the app is PWA, cumpliments of Lighthouse cheker extension tool
+
+you can visit https://github.com/GoogleChrome/lighthouse/blob/HEAD/docs/user-flows.md
+install the extension in the browser called: lighthouse
+going to tools for developers in browser (the app must be served in localhost or remote server)
+and click in the button Analyze page load (first you can check diferents configurations like, navigation, device, ...)
+wait for a seconds and you obtain a visual score table, with diferents skills of the app.
+
+performance, Accesibility, Best Practices, SEO, and PWA acceptance.
+
+![example](snapshot-lighthouse.png)
 
 
 
