@@ -9,13 +9,13 @@
     "start_url": "./src/",
     "scope": "./src/",
     "icons": [{
-            "src": "/src/assets/favicon/icon-512x512.png",
+            "src": "./src/assets/favicon/icon-512x512.png",
             "sizes": "512x512",
             "type": "image/png",
             "purpose": "maskable"
         },
         {
-            "src": "/src/assets/favicon/android-icon-36x36.png",
+            "src": "./src/assets/favicon/android-icon-36x36.png",
             "sizes": "36x36",
             "type": "image/png",
             "density": "0.75"

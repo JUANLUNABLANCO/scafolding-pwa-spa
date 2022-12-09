@@ -32,6 +32,18 @@ module.exports = {
             {
                 type: "asset",
                 test: /\.(png|svg|jpg|jpeg|gif)$/i
+            },
+            {
+                test: /\.(jpg|png|gif)$/,
+                include: /images/,
+                loader: 'url'
+            },
+            {
+                test: /\.(ogg|mp3|wav|mpe?g)$/i,
+                loader: 'file-loader',
+                options: {
+                    name: '[path][name].[ext]'
+                }
             }
         ],
     },

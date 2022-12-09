@@ -12,7 +12,7 @@ home-page h2 {
         display: flex;
         justify-content: center;
         align-items: center;
-        border: 1px solid red;
+        /* border: 1px solid red; */
         padding: 0;
     }
 }
