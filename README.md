@@ -8,17 +8,17 @@
 
   ## descargar proyecto desde github
 
-  [descarga proyecto](https://github.com/JUANLUNABLANCO/scafolding-pwa-spa/archive/refs/heads/main.zip)
+  ![descarga proyecto](https://github.com/JUANLUNABLANCO/scafolding-pwa-spa/archive/refs/heads/main.zip)
 
   descomprimir con winrar o unzip
 
-  [descarga winrar](https://www.winrar.es/descargas/52/descargar-winrar-para-windows-en-espanol)
+  ![descarga winrar](https://www.winrar.es/descargas/52/descargar-winrar-para-windows-en-espanol)
 
   instalar normalmente y usara para descomprimir el proyecto
 
   ## Opción alternativa tener git instalado en window (usuario avanzado)
 
-  [descarga git](https://github.com/git-for-windows/git/releases/download/v2.38.1.windows.1/Git-2.38.1-64-bit.exe)
+  ![descarga git](https://github.com/git-for-windows/git/releases/download/v2.38.1.windows.1/Git-2.38.1-64-bit.exe)
 
   si usas esta opción ya sabes que hacer 
 
@@ -28,7 +28,7 @@
 
   accedes a la carpeta del proyecto ya descomprimida verás algo como esto
 
-  [imagen de carpetas del proyecto](snapshoot-folder-project.png) 
+  ![imagen de carpetas del proyecto](snapshoot-folder-project.png) 
 
   ## primero instalar dependencias
     
@@ -48,7 +48,7 @@
 
     > npm run node:dev
 
-    [dirigete al navegador](http://localhost:8080)
+  ![dirigete al navegador](http://localhost:8080)
 
   ## built project salida en ./dist
 
@@ -118,48 +118,47 @@ La estructura de carpetas será lo más conveniente para satisfacer una Clean Ar
   module.exports = {
     plugins: [new MiniCssExtractPlugin()],
     module: {
-      rules: [
+        rules: [
           // html-loader zero-config
-        { // html-loader
-          test: /\.html$/i,
-          loader: "html-loader",
-        },
-        { // mini-css-extract-plugin
-          test: /\.css$/i,
-          use: [MiniCssExtractPlugin.loader, "css-loader"],
-        },
-        { // css-loader
+          { // html-loader
+            test: /\.html$/i,
+            loader: "html-loader",
+          },
+          { // mini-css-extract-plugin
+            test: /\.css$/i,
+            use: [MiniCssExtractPlugin.loader, "css-loader"],
+          },
+          { // css-loader
           {
             test: /\.css$/i,
             use: ["style-loader", "css-loader"],
-        },
-        {
-          test: /\.css$/i,
-          use: [MiniCssExtractPlugin.loader, "css-loader"],
-        },
-        { // tres en uno sass-loader // si instalas este elimina los otros tres de arriba
-          test: /\.s[ac]ss$/i,
-          use: [
-            // Creates `style` nodes from JS strings
-            "style-loader",
-            // Translates CSS into CommonJS
-            "css-loader",
-            // Compiles Sass to CSS
-            "sass-loader",
-          ],
-        },
-        { // file-loader ??? con html-loader deberia bastar
-          test: /\.(png|jpe?g|gif)$/i,
-          use: [
-            {
-              loader: 'file-loader',
+          },
+          {
+            test: /\.css$/i,
+            use: [MiniCssExtractPlugin.loader, "css-loader"],
+          },
+          { // tres en uno sass-loader // si instalas este elimina los otros tres de arriba
+            test: /\.s[ac]ss$/i,
+            use: [
+                // Creates `style` nodes from JS strings
+                "style-loader",
+                // Translates CSS into CommonJS
+                "css-loader",
+                // Compiles Sass to CSS
+                "sass-loader",
+              ],
             },
-          ],
-        },
-
-      ],
-    },
-  };
+          { // file-loader ??? con html-loader deberia bastar
+            test: /\.(png|jpe?g|gif)$/i,
+            use: [
+              {
+                loader: 'file-loader',
+              },
+            ],
+          },
+        ],
+      },
+    };
 
    --- VER EL ARCHIVO DE CONFIGURACIÓN PARA DEV Y PROD
 
@@ -343,6 +342,14 @@ performance, Accesibility, Best Practices, SEO, and PWA acceptance.
 ![example](snapshot-lighthouse.png)
 
 
+
+## SUBIR a NETLIFY
+
+El proyecto se podría ejecutar en un servidor propio de hecho esa era la idea en principio, había generado un servidor simple de páginas web con Node.js y listo para subirlo a un vps, pero esto no era necesario ni requisito de la app, por tanto al final decidí subirlo a Netlify, entregando la carpeta /dist donde está el proyecto listo para consumir en el index.html, con los enlaces necesarios al css y js.
+
+Para generar el /dist folder:
+
+> npm run build
 
 
 
