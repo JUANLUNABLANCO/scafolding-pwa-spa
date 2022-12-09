@@ -8,17 +8,17 @@
 
   ## descargar proyecto desde github
 
-  ![descarga proyecto](https://github.com/JUANLUNABLANCO/scafolding-pwa-spa/archive/refs/heads/main.zip)
+  [descarga proyecto](https://github.com/JUANLUNABLANCO/scafolding-pwa-spa/archive/refs/heads/main.zip)
 
   descomprimir con winrar o unzip
 
-  ![descarga winrar](https://www.winrar.es/descargas/52/descargar-winrar-para-windows-en-espanol)
+  [descarga winrar](https://www.winrar.es/descargas/52/descargar-winrar-para-windows-en-espanol)
 
   instalar normalmente y usara para descomprimir el proyecto
 
   ## Opción alternativa tener git instalado en window (usuario avanzado)
 
-  ![descarga git](https://github.com/git-for-windows/git/releases/download/v2.38.1.windows.1/Git-2.38.1-64-bit.exe)
+  [descarga git](https://github.com/git-for-windows/git/releases/download/v2.38.1.windows.1/Git-2.38.1-64-bit.exe)
 
   si usas esta opción ya sabes que hacer 
 
