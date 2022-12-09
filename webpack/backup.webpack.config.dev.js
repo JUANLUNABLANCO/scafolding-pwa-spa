@@ -1,16 +1,12 @@
 const path = require("path");
-// const zlib = require("zlib");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const CompressionPlugin = require('compression-webpack-plugin');
-
-// analicemos los pesos del bundle.js y carpetas para optimizar
-const AnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-
+const { dirname } = require("path");
+// const webpack = require('webpack');
 
 module.exports = {
 
     mode: "development",
-    devtool: 'eval-source-map',
+    devtool: "inline-source-map",
     entry: "./src/main.js",
     output: {
         path: path.resolve(__dirname, "dist"),
@@ -18,20 +14,13 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
+            title: "Inject js in HTML:dev",
             template: './src/index.html',
             inject: true,
             filename: "index.html",
-        }),
-        // compresion de archivos grandes
-        new CompressionPlugin({
-            filename: "[path][base].gz",
-            algorithm: "gzip",
-            test: /\.js$|\.css$|\.html$/,
-            threshold: 1000,
-            minRatio: 0.8,
-        }),
-        new AnalyzerPlugin({ analyzerPort: 7777 })
+        })
     ],
+
     module: {
         rules: [{
                 test: /\.html$/i,
@@ -44,7 +33,20 @@ module.exports = {
             {
                 type: "asset",
                 test: /\.(png|svg|jpg|jpeg|gif)$/i
+            },
+            {
+                test: /\.(jpg|png|gif)$/,
+                include: /images/,
+                loader: 'url'
+            },
+            {
+                test: /\.(ogg|mp3|wav|mpe?g)$/i,
+                loader: 'file-loader',
+                options: {
+                    name: '[path][name].[ext]'
+                }
             }
         ]
-    }
+    },
+
 };

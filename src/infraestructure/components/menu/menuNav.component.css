@@ -1,5 +1,9 @@
 /* menu mobile first */
 
+label.sandwich {
+    color: transparent;
+}
+
 .menu-toggler {
     /* position: absolute; */
     display: block;
@@ -16,7 +20,7 @@
   cursor: pointer; */
 }
 
-.menu-toggler:hover+label,
+.menu-toggler .menu-toggler:hover+label,
 .menu-toggler:hover+label:before,
 .menu-toggler:hover+label:after {
     background: white;

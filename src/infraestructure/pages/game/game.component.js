@@ -23,7 +23,7 @@ export class GameComponent extends HTMLElement {
         let TFFLChangeSource = "/src/assets/fx-sounds/tffl-change.wav";
         const fxs_TFFLChange = this.chargeSound(TFFLChangeSource);
         fxs_TFFLChange.volume = .1;
-        fxs_TFFLChange.play();
+        // fxs_TFFLChange.play();
         let isGameOver = false;
         let lives = 3;
         let score = 0;
