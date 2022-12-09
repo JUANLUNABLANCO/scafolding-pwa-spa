@@ -25,27 +25,9 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="assets/favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
-    <script crossorigin='anonymous' src='https://kit.fontawesome.com/a3661468d4.js'></script>
+    <script crossorigin='anonymous' src='https://kit.fontawesome.com/a3661468d4.js' defer></script>
     <!-- favicon -->
     <title>Traffic Ligth</title>
-    <!-- service worker -->
-    <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('./src/sw.js').then(registration => {
-                    // console.log('SW registered: ', registration);
-                }).catch(registrationError => {
-                    console.log('SW registration failed: ', registrationError);
-                });
-                self.addEventListener("install", event => {
-                    console.log("Service worker installed");
-                });
-                self.addEventListener("activate", event => {
-                    console.log("Service worker activated");
-                });
-            });
-        }
-    </script>
 </head>
 
 <body>
@@ -57,25 +39,7 @@
     <main id="content">
         <section id="root"></section>
     </main>
-    <!-- <main id="content">
-    <div class="page  active" id="home">
-      <h1>HOME</h1>
-      
-      <formComponent></formComponent>
-      
-    </div>
-      
-      <div class="page" id="play">
-          <h1>PLAY</h1>
 
-      </div>
-      <div class="page" id="scores">
-          <h1>SCORES</h1>
-
-      </div>
-      
-  </main> -->
-    <!-- single_page_navigation  -->
 </body>
 
 </html>

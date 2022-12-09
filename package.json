@@ -24,6 +24,7 @@
     "author": "JuanLuna",
     "license": "ISC",
     "devDependencies": {
+        "compression-webpack-plugin": "^10.0.0",
         "css-loader": "^6.7.2",
         "cypress": "^11.2.0",
         "file-loader": "^6.2.0",
@@ -34,8 +35,10 @@
         "style-loader": "^3.0.0",
         "url-loader": "^4.1.1",
         "webpack": "^5.42.0",
+        "webpack-bundle-analyzer": "^4.7.0",
         "webpack-cli": "^4.10.0",
-        "webpack-dev-server": "^3.11.2"
+        "webpack-dev-server": "^3.11.2",
+        "webpack-tinypng-compress": "^1.0.1"
     },
     "dependencies": {
         "workbox-cli": "^6.5.4"
