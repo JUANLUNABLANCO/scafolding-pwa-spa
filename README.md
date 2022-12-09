@@ -1,6 +1,73 @@
-# # SCAFOLDING SPA, PWA, VANILLA JS
-En este proyecto crearemos un scafolding de una SPA + PWA, solo con vanilla js. 
+# UTILIZACIÓN
+  
+  Requisito previo Nodejs instalado: v16.17.0 o superior
+
+  [enlace a descarga window](https://nodejs.org/es/download/)
+
+  instalar normalmente
+
+  ## descargar proyecto desde github
+
+  [descarga proyecto](https://github.com/JUANLUNABLANCO/scafolding-pwa-spa/archive/refs/heads/main.zip)
+
+  descomprimir con winrar o unzip
+
+  [descarga winrar](https://www.winrar.es/descargas/52/descargar-winrar-para-windows-en-espanol)
+
+  instalar normalmente y usara para descomprimir el proyecto
+
+  ## Opción alternativa tener git instalado en window (usuario avanzado)
+
+  [descarga git](https://github.com/git-for-windows/git/releases/download/v2.38.1.windows.1/Git-2.38.1-64-bit.exe)
+
+  si usas esta opción ya sabes que hacer 
+
+  > git clone https://github.com/JUANLUNABLANCO/scafolding-pwa-spa.git
+
+  ## Una vez instalado todo lo necesario para poder ejecutar proyectos web en tu máquina
+
+  accedes a la carpeta del proyecto ya descomprimida verás algo como esto
+
+  [imagen de carpetas del proyecto](snapshoot-folder-project.png) 
+
+  ## primero instalar dependencias
+    
+    desde la terminal y ubicado en la raíz del proyecto ejecutas el siguiente comando, sin '>':
+
+    > npm install
+
+  ## Testing
+
+    Con esto podrás acceder alos tests de cypress y ver su ejecución en una interfaz de navegador
+
+    > npm run cypress:node 
+  
+  ## servidor local
+
+    Con esto ejecutas el proyecto en tu navegador de forma local
+
+    > npm run node:dev
+
+    [dirigete al navegador](http://localhost:8080)
+
+  ## built project salida en ./dist
+
+    Con esto lo construyes para poder servirlo en un servidor remoto, (usuarios avanzados)
+
+    > npm run built
+  
+
+# ¿QUÉ HEMOS HECHO?: SPA, PWA, VANILLA JS
+En este proyecto crearemos una  APP, de tipo Single Page Application + Progressive Web App, solo con vanilla js + HTML + CSS, sin frameworks de ningún tipo, ni REACT, ni ANGULAR, ni VUE, ni BOOSTRAP, ni TAILDWIND, demostrando que se puede hacer una aplicación de este tipo solo con el lenguaje, sin añadiduras, lo que tiene sus pros y sus contras:
+
+  1. Menor peso de la aplicación y por tanto mejores cargas (aunque esto dependerá también de otros procesos)
+  2. Es una aplicación que sigue los estandares del lenguaje HTML, CSS y JS, por tanto durable en el tiempo, ya que si se realiza con otros frameworks y/o librerías, dependemos de ellos/as para la actualización
+  3. Más difícil de realizar en principio, pues REACT, ANGULAR, etc te dan muchas cosas ya generadas, construidas.
+
 Utilizaremos algunas librerías para la facilitación de procesos: webpack
+  4. webpack es un empaquetador, hace de intermediario entre nuestro proyecto puro y el proyecto para producción, realizando y automatizando algunas tareas, como comprimir el código, minificarlo, enrarizarlo, y otras cosas.
+  También nos proporciona un servidor de desarrollo, que hubiésemos tenido que montar con nodejs u otros.
+
 Contendrá los siguientes módulos básicos:
   
   1. Routing 
@@ -8,23 +75,6 @@ Contendrá los siguientes módulos básicos:
   3. components
 
 La estructura de carpetas será lo más conveniente para satisfacer una Clean Arqchitecture
-
-# UTILIZACIÓN
-  Requisito previo Nodejs instalado: v16.17.0 o superior
-
-  ## primero instalar dependencias
-    > npm install
-
-  ## Testing
-    > npm run cypress:node 
-  
-  ## servidor local
-    > npm run node:dev
-
-  ## built project salida en ./dist
-    > npm run built
-  
-
 # PROCEDIMIENTOS E INSTALACIONES
   Requisito previo Nodejs instalado: v16.17.0 
 
@@ -143,6 +193,7 @@ La estructura de carpetas será lo más conveniente para satisfacer una Clean Ar
   "built": "npm run clean && webpack -d --config ./webpack/webpack.config.js --env env=prod", // con -d lo hace legible
 
 # ARCHIVOS INICIALES
+
 > touch index.html
 > touch main.css
 > touch main.js
@@ -153,7 +204,7 @@ La estructura de carpetas será lo más conveniente para satisfacer una Clean Ar
     |____ main.js
     |____ main.css  
 
-# ARCHIVOS GENERADOS
+# ARCHIVOS GENERADOS PARA PRODUCCION
 
   ./dist
    |___ index.html
@@ -162,12 +213,13 @@ La estructura de carpetas será lo más conveniente para satisfacer una Clean Ar
 
 # ENLAZAR LOS ARCHIVOS DE LA MANERA TRADICIONAL
   El CSS
-    <link rel="stylesheet" href="main.css">
-  </head>
+    <code><link rel="stylesheet" href="main.css">
+  </head></></code>
   
   El js
-    <script src="main.js"></script>
-  </body>
+    <code><script src="main.js"></script>
+  </body></code>
+  
   con webpack esto no es necesario, tira de configuración
 
 # ESTRUCTURA DE DIRECTORIOS DEV
