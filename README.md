@@ -260,8 +260,8 @@ La estructura de carpetas será lo más conveniente para satisfacer una Clean Ar
 
   destruye el ./dist y lo vuelve a construir con las compilaciones necesarias (sass to css) y las cargas de archivos desde ./src
   También hace otras cosas como minificar archivos css y js. 
-  En este caso no sirve nada, solo hace el build de la aplicación, eso irá a prdoucción, por tanto la carpeta que se debe llevar desde github a netlify es ./dist
-  Por tanto ./ se necesita llevar a producción, ya sea haciendo el > npm run build:prod y luego el git push
+  En este caso no sirve nada, solo hace el built de la aplicación, eso irá a prdoucción, por tanto la carpeta que se debe llevar desde github a netlify es ./dist
+  Por tanto ./ se necesita llevar a producción, ya sea haciendo el > npm run built:prod y luego el git push
   O automatizando en el repo de git para que haga el built y se genere la carpete dist automáticamente tras el test
   
   > npm run built
