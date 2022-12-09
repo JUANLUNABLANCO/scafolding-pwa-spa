@@ -127,5 +127,10 @@ describe('Form Component Unit Testing: ', () => {
         console.log('#### points of John', pointsOfJohn);
         assert.equal(pointsOfJohn, null);
 
+        // por ultimo borremos todo
+        ScoresService.clearAll();
+        listOfScores = ScoresService.getAll();
+        assert.deepEqual(listOfScores, []); // array vacío no hay nada en el local storage
+
     });
 });
