@@ -1,3 +1,4 @@
+import './pwa/registerSW.js';
 import './main.css';
 import { NavigatorMenuComponent } from "./infraestructure/components/menu/menuNav.component";
 import { router } from "./infraestructure/router/index.router";

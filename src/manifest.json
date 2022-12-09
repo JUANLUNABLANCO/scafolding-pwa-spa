@@ -6,7 +6,7 @@
     "description": "An PWA SPA, game",
     "orientation": "landscape",
     "display": "standalone",
-    "start_url": "./src/",
+    "start_url": "./src/index.html",
     "scope": "./src/",
     "icons": [{
             "src": "./src/assets/favicon/icon-512x512.png",

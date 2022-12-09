@@ -4,24 +4,31 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
     mode: "production",
-    devtool: 'eval-source-map',
+    devtool: 'source-map',
+
     entry: "./src/main.js",
     output: {
-        path: path.resolve(__dirname, "..", "dist"),
-        filename: "app.js",
+        path: path.resolve(__dirname, "../dist"),
+        filename: "bundle.js"
     },
-
     plugins: [
         new HtmlWebpackPlugin({
+            title: "Inject js in HTML:dev",
             template: "./src/index.html",
             filename: "index.html",
         }),
-        new MiniCssExtractPlugin(),
+        new MiniCssExtractPlugin({
+            title: "CSS-mini-extract"
+        }),
     ],
     module: {
         rules: [{
                 test: /\.css$/i,
-                use: [MiniCssExtractPlugin.loader, "css-loader"],
+                use: [{
+                        loader: MiniCssExtractPlugin.loader,
+                    },
+                    "css-loader",
+                ],
             },
             {
                 test: /\.html$/i,
@@ -32,5 +39,6 @@ module.exports = {
                 test: /\.(png|svg|jpg|jpeg|gif)$/i
             }
         ],
-    }
+    },
+
 };
