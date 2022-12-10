@@ -1,6 +1,13 @@
 import { Storage } from '../../infraestructure/localStorage/storage.js';
 
+const setLogedUser = (nickName) => {
+    Storage.setItem('currentUserLoged', nickName);
+}
+const getLogerUser = () => {
+    return Storage.getItem('currentUserLoged');
+}
 const set = (nickName, newScore) => {
+    console.log('TIPO: ', typeof newScore);
     // DEBUG newScore= 1000
     // newScore = 500;
     // si existe y newScore es mayor
@@ -8,6 +15,8 @@ const set = (nickName, newScore) => {
         nickName: nickName,
         highScore: newScore
     }
+
+
     if (Storage.getItem(nickName)) {
         const highScore = Storage.getItem(nickName);
         if (newScore > highScore) {
@@ -16,7 +25,7 @@ const set = (nickName, newScore) => {
             user.highScore = highScore;
         }
     }
-    Storage.setItem(user.nickName, user.highScore);
+    Storage.setItem(user.nickName, Number(user.highScore));
 
     return user;
 };
@@ -32,22 +41,26 @@ const clearAll = () => {
     Storage.clearAllItems();
 };
 const getAll = () => {
-    var arrayItems = Storage.getAllItems();
-
-    console.log("### ARRAY ITEMS: ", arrayItems);
+    var arrayKeys = Storage.getAllItems();
     var users = [];
+    console.log("### ARRAY Names: ", arrayKeys);
 
-    for (var i = 0; i < arrayItems.length; i++) {
-        let key = Object.keys(arrayItems[i])[0];
-        let value = arrayItems[i][key];
-        // console.log(value);
-        let stringObject = getObjectGame(key, value);
-        // console.log('##### String object: ', stringObject);
 
-        users[i] = stringObject;
+    for (var i = 0; i < arrayKeys.length; i++) {
+        if (arrayKeys[i] != 'currentUserLoged') {
+            let userNickName = arrayKeys[i];
+            console.log('arraykeys[i]=', arrayKeys[i]);
+            let userHighScore = Storage.getItem(arrayKeys[i]);
+            let oneUser = {
+                nickName: userNickName,
+                highScore: userHighScore
+            }
+            users.push(oneUser);
+        }
     }
     console.log('#### users: ', users);
     return users;
+
 }
 const getObjectGame = (key, value) => {
     // si por algún motivo cambiamos los indices del juego, solo hay que modificarlos aquí
@@ -56,6 +69,8 @@ const getObjectGame = (key, value) => {
 }
 
 export const ScoresService = {
+    setLogedUser,
+    getLogerUser,
     set,
     get,
     remove,

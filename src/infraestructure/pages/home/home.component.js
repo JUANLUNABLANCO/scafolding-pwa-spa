@@ -1,5 +1,5 @@
 import homeHTML from './home.component.html';
-import homeCSS from './home.component.css';
+import './home.component.css';
 import '../../components/form/form.component.js';
 
 export class HomeComponent extends HTMLElement {
