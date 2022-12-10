@@ -1,8 +1,10 @@
 const path = require("path");
-// const zlib = require("zlib");
+// para inyectar html
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+// compresion de archivos pesados
 const CompressionPlugin = require('compression-webpack-plugin');
-
+// service worker inyection
+const WorkboxPlugin = require('workbox-webpack-plugin');
 // DEBUG analicemos los pesos del bundle.js y carpetas para optimizar
 // const AnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
@@ -14,13 +16,19 @@ module.exports = {
     entry: "./src/main.js",
     output: {
         path: path.resolve(__dirname, "dist"),
-        filename: "bundle.js"
+        filename: "[name].bundle.js"
     },
     plugins: [
         new HtmlWebpackPlugin({
             template: './src/index.html',
             inject: true,
             filename: "index.html",
+        }),
+        new WorkboxPlugin.GenerateSW({
+            // these options encourage the ServiceWorkers to get in there fast
+            // and not allow any straggling "old" SWs to hang around
+            clientsClaim: true,
+            skipWaiting: true,
         }),
         // compresion de archivos grandes
         new CompressionPlugin({

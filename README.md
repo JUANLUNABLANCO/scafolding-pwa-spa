@@ -112,58 +112,8 @@ La estructura de carpetas será lo más conveniente para satisfacer una Clean Ar
   cypress testing
   > npm install -D cypress        // cypress framework
 
-  ## CONFIGURACIONES WEBPACK
-  // configuracion webpack.config.js 
-  const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-  module.exports = {
-    plugins: [new MiniCssExtractPlugin()],
-    module: {
-        rules: [
-          // html-loader zero-config
-          { // html-loader
-            test: /\.html$/i,
-            loader: "html-loader",
-          },
-          { // mini-css-extract-plugin
-            test: /\.css$/i,
-            use: [MiniCssExtractPlugin.loader, "css-loader"],
-          },
-          { // css-loader
-          {
-            test: /\.css$/i,
-            use: ["style-loader", "css-loader"],
-          },
-          {
-            test: /\.css$/i,
-            use: [MiniCssExtractPlugin.loader, "css-loader"],
-          },
-          { // tres en uno sass-loader // si instalas este elimina los otros tres de arriba
-            test: /\.s[ac]ss$/i,
-            use: [
-                // Creates `style` nodes from JS strings
-                "style-loader",
-                // Translates CSS into CommonJS
-                "css-loader",
-                // Compiles Sass to CSS
-                "sass-loader",
-              ],
-            },
-          { // file-loader ??? con html-loader deberia bastar
-            test: /\.(png|jpe?g|gif)$/i,
-            use: [
-              {
-                loader: 'file-loader',
-              },
-            ],
-          },
-        ],
-      },
-    };
-
-   --- VER EL ARCHIVO DE CONFIGURACIÓN PARA DEV Y PROD
-
-# ARCHIVOS DE CONFIGURACION PRODUCTION DEVELOPMENT AFINANDO
-  ## WEBPACK
+  ## ARCHIVOS DE CONFIGURACION PRODUCTION | DEVELOPMENT AFINANDO
+  ### WEBPACK
   --- webpack.config.js ---
   module.exports = ({ env }) => require(`./webpack.config.${env}.js`);
 
@@ -178,6 +128,7 @@ La estructura de carpetas será lo más conveniente para satisfacer una Clean Ar
   > touch ./webpack/webpack.config.dev.js
   > touch ./webpack/webpack.config.prod.js
     ... VER ARCHIVOS
+
 
 # SCRIPTS NPM
   // testing
@@ -227,7 +178,7 @@ La estructura de carpetas será lo más conveniente para satisfacer una Clean Ar
   ./src
     |____ assets
     |____ domain
-    |     |____ services
+    |     |____ services / storage
     |____ infraestructure
     |     |____ components
     |     |     |____ AComponent

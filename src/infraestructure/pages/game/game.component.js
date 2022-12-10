@@ -65,6 +65,7 @@ export class GameComponent extends HTMLElement {
         //     // start button
         startButton.addEventListener("click", () => {
             resetGame();
+            playerHighScore.innerText = this.highScoreUserLoged;
             //controls amd buttons visibility
             controls.classList.add("hide");
             stopButton.classList.remove("hide");
@@ -115,7 +116,7 @@ export class GameComponent extends HTMLElement {
             minutes = 0;
             // reloj en marcha
             stopTime();
-            reloj = setInterval(timeGenerator, 10);
+            reloj = setInterval(timeGenerator, 100);
         }
 
         function setScoreText() {
@@ -173,27 +174,30 @@ export class GameComponent extends HTMLElement {
         }
         // reloj ##################
         function timeGenerator() {
-            mseconds += 10;
+            mseconds += 100;
 
             //minutes logic
             if (mseconds >= 1000) {
-                seconds += 1;
                 mseconds = 0;
+                seconds += 1;
+
             }
             if (seconds >= 60) {
-                minutes += 1;
                 seconds = 0;
+                minutes += 1;
             }
             //format time before displaying
             let msecondsValue;
-            msecondsValue = mseconds < 1000 ? `${mseconds}` : mseconds;
+
             msecondsValue = mseconds < 100 ? `0${mseconds}` : mseconds;
             msecondsValue = mseconds < 10 ? `00${mseconds}` : mseconds;
+            msecondsValue = mseconds <= 0 ? `000` : mseconds;
+
 
 
             let secondsValue = seconds < 10 ? `0${seconds}` : seconds;
             let minutesValue = minutes < 10 ? `0${minutes}` : minutes;
-            timeValue.innerHTML = `<span>Time: </span>${minutesValue}:${secondsValue}:${mseconds}`;
+            timeValue.innerHTML = `<span></span>${minutesValue}:${secondsValue}:${msecondsValue}`;
 
         };
         // deteccion de clicks #####

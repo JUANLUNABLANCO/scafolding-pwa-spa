@@ -159,6 +159,12 @@ label.sandwich {
     /* cursor: pointer; */
 }
 
+@media screen and (max-height: 400px) {
+    .menu-item {
+        bottom: 10px
+    }
+}
+
 .menu-item a {
     display: block;
     width: inherit;
