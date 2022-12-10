@@ -1,6 +1,3 @@
-// registro de PWA service worker
-import './pwa/registerSW.js';
-
 // aplicación estilos
 import './main.css';
 // aplicacion componentes
