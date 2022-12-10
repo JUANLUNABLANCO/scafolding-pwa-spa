@@ -16,13 +16,13 @@ module.exports = {
     entry: "./src/main.js",
     output: {
         path: path.resolve(__dirname, "dist"),
-        filename: "[name].bundle.js"
+        filename: "bundle.js"
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: './src/index.html',
-            inject: true,
-            filename: "index.html",
+            template: './src/index.html', // archivo de la vista principal
+            inject: true, // inject: 'body'  se inyectará el js ahí
+            filename: "index.html", // nuevo nombre para el index. todos los htmls estarán ahí
         }),
         new WorkboxPlugin.GenerateSW({
             // these options encourage the ServiceWorkers to get in there fast
