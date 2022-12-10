@@ -117,8 +117,10 @@ export class FormComponent extends HTMLElement {
                     this.userLoged = user.nickName;
                     // ver listado de usuarios y si no está el nuevo se graba
 
-                    console.log(this.userLoged);
+                    console.log('######## userLoged: ', this.userLoged);
                     console.log('all items:', ScoresService.getAll());
+
+                    ScoresService.set('currentUserLoged', this.userLoged);
                     // const currentUserLoged = 
                     document.dispatchEvent(new CustomEvent('access-permited'));
                 }

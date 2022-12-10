@@ -1,10 +1,15 @@
 import gameHTML from './game.component.html';
 import './game.component.css';
+import { ScoresService } from '../../../domain/services/storage.service.js';
 
 export class GameComponent extends HTMLElement {
     constructor() {
         super();
-        // this.content = this.createPosts();
+        // ScoresService.clearAll();
+        this.currentUserLoged = ScoresService.getLogerUser();
+        this.highScoreUserLoged = ScoresService.get(this.currentUserLoged);
+        console.log("##### current user loged: name ", this.currentUserLoged);
+        console.log("##### current user loged: high score ", this.highScoreUserLoged);
     }
     connectedCallback() { // Cuando se carga el componente, atributos modificables double binding
         this.innerHTML = gameHTML;
@@ -16,14 +21,16 @@ export class GameComponent extends HTMLElement {
         const audio = new Audio(fuente);
         audio.loop = false;
         audio.controls = false;
+        audio.volume = .1;
         return audio;
     };
     game() {
+        console.log('################# user loged GAME: ', this.currentUserLoged);
         // let soundStepSource = "/assets/fx-sounds/step.wma";
         let TFFLChangeSource = "/src/assets/fx-sounds/tffl-change.wav";
         const fxs_TFFLChange = this.chargeSound(TFFLChangeSource);
-        fxs_TFFLChange.volume = .1;
         // fxs_TFFLChange.play();
+
         let isGameOver = false;
         let lives = 3;
         let score = 0;
@@ -50,7 +57,10 @@ export class GameComponent extends HTMLElement {
         const result = document.getElementById("result"); // caja para poner el resultado final
         const controls = document.querySelector(".controls-container"); // puntos finales y mensaje y boton start
         const playerName = document.getElementById("namePlayer");
-        // const playerScore = document.getElementById("highScorePlayer");
+        const playerHighScore = document.getElementById("highScorePlayer");
+        // scoreText.innerText = this.highScoreUserLoged;
+        playerName.innerText = this.currentUserLoged;
+        playerHighScore.innerText = this.highScoreUserLoged;
         //     // detección de eventos ###
         //     // start button
         startButton.addEventListener("click", () => {
@@ -64,12 +74,22 @@ export class GameComponent extends HTMLElement {
         });
         // Stop game
         stopButton.addEventListener("click", (() => {
+            if (score > this.highScoreUserLoged) {
+                this.highScoreUserLoged = score;
+                ScoresService.set(this.currentUserLoged, score);
+            }
+
+
+
             if (isGameOver) {
                 gameOver();
             } else {
                 stopTime();
 
-                result.innerHTML = `<h2>STOPPED</h2><h4>Score: ${score}</h4>`;
+                result.innerHTML = `
+                    <h3>HIGH SCORE: ${this.highScoreUserLoged} </h3>
+                    <h4>Score: ${score}</h4>
+                `;
 
                 visibilityOffUI();
             }
@@ -123,7 +143,6 @@ export class GameComponent extends HTMLElement {
             visibilityOffUI();
             // console.log(`lives: ${lives} score: ${score}`);      
         }
-
         // funciones de tiempo ####
         function stateChangue() {
             // pintar aquí el semáforo del nuevo color y cambiar el estado del currentColor
@@ -140,13 +159,11 @@ export class GameComponent extends HTMLElement {
         //     'console.log(como ahora estamos en verde el tiempo es otro distinto de 3000)'
         //     return 2000;
         // }
-
         function cambiarIntervalo(ms) {
             // console.log('vamos a cambiar el intervalo a: ' + ms);
             try { clearTimeout(intervaloSemaforo) } catch (e) {};
             intervaloSemaforo = setTimeout(stateChangue, ms); // esperará ms antes de ejecutar
         }
-
         // pick random time for intervalGreen
         function pickTimeLightGreen() {
             // by the moment 5s greenLight = max(10000 - score * 100, 2000) + random(-1500, 1500)
@@ -154,7 +171,6 @@ export class GameComponent extends HTMLElement {
             console.log(maxTimeGreenLight);
             return maxTimeGreenLight;
         }
-
         // reloj ##################
         function timeGenerator() {
             mseconds += 10;
@@ -180,7 +196,6 @@ export class GameComponent extends HTMLElement {
             timeValue.innerHTML = `<span>Time: </span>${minutesValue}:${secondsValue}:${mseconds}`;
 
         };
-
         // deteccion de clicks #####
         function clickDetected(e) {
             fxs_TFFLChange.play();

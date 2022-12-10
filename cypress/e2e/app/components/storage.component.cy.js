@@ -7,9 +7,11 @@ describe('Form Component Unit Testing: ', () => {
         for (var i = 0; i < initialListOfScores.length; i++) {
 
             var key = Object.keys(initialListOfScores[i]);
-            var value = Object.values(initialListOfScores[i]);
-            // console.log(`key: ${key} => value: ${value}`);
-            ScoresService.set(key, value);
+
+            var value = Number(Object.values(initialListOfScores[i]));
+            console.log(typeof value);
+            console.log(`key: ${key} => value:  ${value}`);
+            ScoresService.set(key, Number(value));
         }
     }
 
@@ -127,5 +129,21 @@ describe('Form Component Unit Testing: ', () => {
         console.log('#### points of John', pointsOfJohn);
         assert.equal(pointsOfJohn, null);
 
+        // por ultimo borremos todo
+        ScoresService.clearAll();
+        listOfScores = ScoresService.getAll();
+        assert.deepEqual(listOfScores, []); // array vacío no hay nada en el local storage
+
     });
 });
+// describe('Acceso de Usuario: ', () => {
+//     it('anotemos un user loged: ALAVRO', () => {
+//         ScoresService.clearAll();
+//         ScoresService.setLogedUser('ALVARO');
+//         const currentUserLoged = ScoresService.getLogerUser();
+//         console.log('ALVARO =', currentUserLoged);
+//         assert.equal('ALVARO', currentUserLoged);
+
+//     });
+
+// });
