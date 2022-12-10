@@ -3,14 +3,14 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CompressionPlugin = require('compression-webpack-plugin');
 
-// analicemos los pesos del bundle.js y carpetas para optimizar
-const AnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+// DEBUG analicemos los pesos del bundle.js y carpetas para optimizar
+// const AnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 
 module.exports = {
 
     mode: "development",
-    devtool: 'eval-source-map',
+    devtool: 'inline-source-map',
     entry: "./src/main.js",
     output: {
         path: path.resolve(__dirname, "dist"),
@@ -30,7 +30,7 @@ module.exports = {
             threshold: 1000,
             minRatio: 0.8,
         }),
-        new AnalyzerPlugin({ analyzerPort: 7777 })
+        // new AnalyzerPlugin({ analyzerPort: 7777 })
     ],
     module: {
         rules: [{
