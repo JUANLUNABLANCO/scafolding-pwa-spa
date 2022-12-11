@@ -5,6 +5,8 @@ export const Storage = {
 
     getItem: (key) => {
         const storedItem = localStorage.getItem(key);
+
+        console.log('############### STORED ITEM: ', storedItem, ' TYPE ', typeof storedItem);
         // si no existe
         return storedItem != null ? storedItem : null;
     },

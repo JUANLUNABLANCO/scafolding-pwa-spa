@@ -15,7 +15,7 @@ describe('Form Component Unit Testing: ', () => {
         }
     }
 
-    beforeEach(() => {
+    beforeEach(() => { // 8080 dev 5500/dist/ prod
         cy.visit('http://127.0.0.1:8080/#');
         ScoresService.clearAll();
     });

@@ -4,10 +4,10 @@ const setLogedUser = (nickName) => {
     Storage.setItem('currentUserLoged', nickName);
 }
 const getLogerUser = () => {
-    return Storage.getItem('currentUserLoged');
+    return Number(Storage.getItem('currentUserLoged'));
 }
 const set = (nickName, newScore) => {
-    console.log('TIPO: ', typeof newScore);
+    // console.log('TIPO: ', typeof newScore);
     // DEBUG newScore= 1000
     // newScore = 500;
     // si existe y newScore es mayor
@@ -18,7 +18,7 @@ const set = (nickName, newScore) => {
 
 
     if (Storage.getItem(nickName)) {
-        const highScore = Storage.getItem(nickName);
+        const highScore = Number(Storage.getItem(nickName));
         if (newScore > highScore) {
             user.highScore = newScore;
         } else {
@@ -50,7 +50,7 @@ const getAll = () => {
         if (arrayKeys[i] != 'currentUserLoged') {
             let userNickName = arrayKeys[i];
             console.log('arraykeys[i]=', arrayKeys[i]);
-            let userHighScore = Storage.getItem(arrayKeys[i]);
+            let userHighScore = Number(Storage.getItem(arrayKeys[i]));
             let oneUser = {
                 nickName: userNickName,
                 highScore: userHighScore

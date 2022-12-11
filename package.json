@@ -6,7 +6,7 @@
     "scripts": {
         "cypress:open": "cypress open --browser chrome --e2e",
         "node:dev": "webpack serve --config ./webpack/webpack.config.js --env env=dev --open",
-        "clean": "rimraf dist",
+        "clean": "rimraf __production",
         "build": "npm run clean && webpack --config ./webpack/webpack.config.js --env env=prod",
         "built:legible": "npm run clean && webpack -d --config ./webpack/webpack.config.js --env env=prod"
     },

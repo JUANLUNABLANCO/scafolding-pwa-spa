@@ -1,6 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const CompressionPlugin = require('compression-webpack-plugin');
+// const CompressionPlugin = require('compression-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 
@@ -23,13 +23,13 @@ module.exports = {
             }
         }),
         new MiniCssExtractPlugin(),
-        new CompressionPlugin({
-            filename: "[path][base].gz",
-            algorithm: "gzip",
-            test: /\.js$|\.css$|\.html$/,
-            threshold: 1000,
-            minRatio: 0.8,
-        })
+        // new CompressionPlugin({
+        //     filename: "[path][base].gz",
+        //     algorithm: "gzip",
+        //     test: /\.js$|\.css$|\.html$/,
+        //     threshold: 1000,
+        //     minRatio: 0.8,
+        // })
     ],
     module: {
         rules: [{
