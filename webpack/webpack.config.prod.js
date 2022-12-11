@@ -2,27 +2,34 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CompressionPlugin = require('compression-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const WorkboxPlugin = require('workbox-webpack-plugin');
+
 
 module.exports = {
     mode: "production",
     devtool: 'eval-source-map',
     entry: "./src/main.js",
     output: {
-        path: path.resolve(__dirname, "..", "dist"),
+        path: path.resolve(__dirname, "..", "__production"),
         filename: "app.js",
         // publicPath: '/'
     },
     plugins: [
         new HtmlWebpackPlugin({
             template: "./src/index.html",
-            // minify: {
-            //     removeComments: true,
-            //     collapseWhitespace: true,
-            //     removeAttributeQuotes: true
-            //  }
+            minify: {
+                removeComments: true,
+                collapseWhitespace: true,
+                removeAttributeQuotes: true
+            }
         }),
         new MiniCssExtractPlugin(),
+        new CompressionPlugin({
+            filename: "[path][base].gz",
+            algorithm: "gzip",
+            test: /\.js$|\.css$|\.html$/,
+            threshold: 1000,
+            minRatio: 0.8,
+        })
     ],
     module: {
         rules: [{
@@ -39,7 +46,7 @@ module.exports = {
             // }
         ],
     },
-    resolve: {
-        extensions: [".js", ".jsx", ".json"]
-    }
+    // resolve: {
+    //     extensions: [".js", ".jsx", ".json"]
+    // }
 };

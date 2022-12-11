@@ -22,7 +22,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './src/index.html', // archivo de la vista principal
             inject: true, // inject: 'body'  se inyectará el js ahí
-            filename: "index.html", // nuevo nombre para el index. todos los htmls estarán ahí
+            filename: "index.html", // nuevo nombre para el index. todos los htmls estarán ahí, si no lo pones será el mismo
         }),
         new WorkboxPlugin.GenerateSW({
             // these options encourage the ServiceWorkers to get in there fast

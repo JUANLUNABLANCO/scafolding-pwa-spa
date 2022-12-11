@@ -28,7 +28,7 @@
 
   accedes a la carpeta del proyecto ya descomprimida verás algo como esto
 
-  ![imagen de carpetas del proyecto](snapshoot-folder-project.png) 
+  ![imagen de carpetas del proyecto](__WORK__/snapshoot-folder-project.png) 
 
   ## primero instalar dependencias
     
@@ -48,7 +48,7 @@
 
     > npm run node:dev
 
-  ![dirigete al navegador](http://localhost:8080)
+  [dirigete al navegador](http://localhost:8080)
 
   ## built project salida en ./dist
 
@@ -278,7 +278,7 @@ se debería probar:
 > npm run node:dev
 > npm run cypress:open
 
-![example2](snapshot-cypress.png)
+![example2](__WORK__/snapshot-cypress.png)
 
 ## check that the app is PWA, cumpliments of Lighthouse cheker extension tool
 
@@ -290,7 +290,7 @@ wait for a seconds and you obtain a visual score table, with diferents skills of
 
 performance, Accesibility, Best Practices, SEO, and PWA acceptance.
 
-![example](snapshot-lighthouse.png)
+![example](__WORK__/snapshot-lighthouse.png)
 
 
 
@@ -301,6 +301,19 @@ El proyecto se podría ejecutar en un servidor propio de hecho esa era la idea e
 Para generar el /dist folder:
 
 > npm run build
+
+
+## DIFICULTADES ENCONTRADAS
+
+Al usar por primera vez webpack, era todo un lío, sobre todo webpack me he dado cuenta después de varios días que está orientado a frameworks como React, vue, sveltte, angular etc, pero que en vanilla js no hay ni tantos plugins ni tanta documentación, al final tuve que hacer mi propio script de bash para empaquetar e injectar los ficheros del manifest y del service worker, hacer un build básico de index.html, js y css y lo demás con el script, porque los links de imágenes y del manifest los rompía.
+
+Ha sido una experiencia agradable, aprender nuevas cosas y salir de la burbuja de comodidad que nos ofrecen por ejemplo Angular, que no te preocupas de nada de eso, sino que vas directamente al código, esto tiene sus pros y sus contras,...
+
+PPor otro lado nunca había desarrollado ciertas cosas en vanilla js, como componentes, y PWA, eso dificultó el desarrollo de sobremanera.
+
+Ahora me queda claro donde queda cada uno vanillajs (siempre compatible), React (me empieza a llamar), webpack (me rompió la cabeza con sus plugins y configuraciones), angular (que lo usé por años) y yo (que nunca me rindo y me gusta aprender).
+
+
 
 
 
