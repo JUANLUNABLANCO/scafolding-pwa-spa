@@ -13,7 +13,7 @@ export class ScoresComponent extends HTMLElement {
         // console.log("##### current user loged: name ", this.currentUserLoged);
         // console.log("##### current user loged: high score ", this.highScoreUserLoged);
 
-        this.users = ScoresService.getAll().slice(0, 11);
+        this.users = ScoresService.getAll();
         // console.log("##### Users ", this.users);
     }
     static get observerAttributes() { // lista de atributos a observar
