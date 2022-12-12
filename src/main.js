@@ -1,5 +1,8 @@
 // aplicación estilos
 import './main.css';
+// Register service worker
+import RegisterServiceWorker from './registerSW.js';
+RegisterServiceWorker();
 // aplicacion componentes
 import { NavigatorMenuComponent } from "./infraestructure/components/menu/menuNav.component";
 import { router } from "./infraestructure/router/index.router";

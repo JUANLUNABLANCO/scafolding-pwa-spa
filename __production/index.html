@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang=en>
+
+<head>
+    <link rel=apple-touch-icon type=image/png sizes=57x57 href=36462015dd369cd6906c.png>
+    <link rel=apple-touch-icon type=image/png sizes=60x60 href=78021e281be547406ae2.png>
+    <link rel=apple-touch-icon type=image/png sizes=72x72 href=e008a4d9addf4cab0762.png>
+    <link rel=apple-touch-icon type=image/png sizes=76x76 href=53cfb28aaf5e6d660a66.png>
+    <link rel=apple-touch-icon type=image/png sizes=114x114 href=36e5dc573bacd84d00ce.png>
+    <link rel=apple-touch-icon type=image/png sizes=120x120 href=857de475068504f8801f.png>
+    <link rel=apple-touch-icon type=image/png sizes=144x144 href=bd9a64290043b369a67f.png>
+    <link rel=apple-touch-icon type=image/png sizes=152x152 href=64e283899e3abcd3e712.png>
+    <link rel=apple-touch-icon type=image/png sizes=180x180 href=b86e18a6982c6697498e.png>
+    <link rel=icon type=image/png sizes=144x144 href=d0cddd82f545f7490071.png>
+    <link rel=icon type=image/png sizes=192x192 href=b3b79f9c95b9c6f4d3e4.png>
+    <link rel=icon type=image/png sizes=32x32 href=d0b8f7f4c9e2ec824b6d.png>
+    <link rel=icon type=image/png sizes=96x96 href=433b5ee166247ef88a0b.png>
+    <link rel=icon type=image/png sizes=16x16 href=5b37125050eff75dccae.png>
+    <link rel=icon href=d007dde45b6a7660d67a.ico type=image/x-icon>
+    <meta charset=UTF-8>
+    <meta http-equiv=X-UA-Compatible content="IE=edge">
+    <meta name=viewport content="width=device-width,initial-scale=1">
+    <meta http-equiv=X-UA-Compatible content="IE=edge">
+    <meta name=msapplication-TileColor content=#ffffff>
+    <meta name=theme-color content=#ffffff>
+    <meta name=msapplication-TileImage content=bd9a64290043b369a67f.png>
+    <meta name=description content="Aplicacion sencilla una SPA Single Page Application, PWA Progressive Web App, contiene un juego y utiliza el localstorage para anotar los highscores">
+    <meta name=keywords content="#SPA, #PWA, #VANILLAJS, #HTML, #CSS, #WEBCOMPONENTS, #WEBPACK, #CYPRESS #TESTING">
+    <script crossorigin=anonymous src=https://kit.fontawesome.com/a3661468d4.js defer=defer></script>
+    <title>Traffic Ligth</title>
+    <link rel=manifest href=37cd15c46b7c92f260b2.json>
+    <link rel=stylesheet href=b88d04fba731603756b1.css>
+    <script defer=defer src=291f552f76cbee18bc94.js></script>
+    <script defer=defer src=app.js></script>
+    <link href=main.css rel=stylesheet>
+</head>
+
+<body>
+    <script>
+        "serviceWorker" in navigator && window.addEventListener("load", () => {
+            navigator.serviceWorker.register("./sw.js").then(e => {
+                console.log("SW registered: ", e)
+            }).catch(e => {
+                console.log("SW registration failed: ", e)
+            }), self.addEventListener("install", e => {
+                console.log("Service worker installed")
+            }), self.addEventListener("activate", e => {
+                console.log("Service worker activated")
+            })
+        })
+    </script>
+    <menu-nav></menu-nav>
+    <main id=content>
+        <section id=root></section>
+    </main>
+</body>
+
+</html>

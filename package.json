@@ -25,6 +25,7 @@
     "license": "ISC",
     "devDependencies": {
         "compression-webpack-plugin": "^10.0.0",
+        "copy-webpack-plugin": "^11.0.0",
         "css-loader": "^6.7.2",
         "cypress": "^11.2.0",
         "file-loader": "^6.2.0",

@@ -27,6 +27,8 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
     <meta name="msapplication-TileImage" content="assets/favicon/ms-icon-144x144.png">
+    <meta name="description" content="Aplicacion sencilla una SPA Single Page Application, PWA Progressive Web App, contiene un juego y utiliza el localstorage para anotar los highscores">
+    <meta name="keywords" content="#SPA, #PWA, #VANILLAJS, #HTML, #CSS, #WEBCOMPONENTS, #WEBPACK, #CYPRESS #TESTING">
     <!-- fontawesome -->
     <script crossorigin='anonymous' src='https://kit.fontawesome.com/a3661468d4.js' defer></script>
     <!-- title -->
@@ -36,28 +38,10 @@
     <!-- <link rel="manifest" href="manifest.json"> -->
     <!-- css y js  -->
     <!-- <link rel="stylesheet" href="main.css"> -->
-    <!-- <script defer="defer" src="app.js"></script> -->
+    <!-- <script defer="defer" src="main.js"></script> -->
 </head>
 
 <body>
-    <script>
-        if ('serviceWorker' in navigator) {
-            // alert('service worker');
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('./sw.js').then(registration => {
-                    console.log('SW registered: ', registration);
-                }).catch(registrationError => {
-                    console.log('SW registration failed: ', registrationError);
-                });
-                self.addEventListener("install", event => {
-                    console.log("Service worker installed");
-                });
-                self.addEventListener("activate", event => {
-                    console.log("Service worker activated");
-                });
-            });
-        }
-    </script>
     <!-- single_page_navigation  -->
     <!-- menu-nav -->
     <menu-nav></menu-nav>
