@@ -6,7 +6,7 @@ export const Storage = {
     getItem: (key) => {
         const storedItem = localStorage.getItem(key);
 
-        console.log('############### STORED ITEM: ', storedItem, ' TYPE ', typeof storedItem);
+        // console.log('############### STORED ITEM: ', storedItem, ' TYPE ', typeof storedItem);
         // si no existe
         return storedItem != null ? storedItem : null;
     },
@@ -27,6 +27,6 @@ export const Storage = {
 
     clearAllItems: () => {
         localStorage.clear();
-        console.log('Storage borrado');
+        // console.log('Storage borrado');
     }
 }

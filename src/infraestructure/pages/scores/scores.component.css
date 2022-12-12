@@ -33,7 +33,7 @@ scores-page h1 {
     width: 100%;
     padding: 40px;
     line-height: 1.5;
-    font: 900 5em 'Concert One', sans-serif;
+    font: 900 3em 'Concert One', sans-serif;
     text-transform: uppercase;
     position: absolute;
     color: #fff;
@@ -94,7 +94,119 @@ scores-page h1:nth-child(10) {
 scores-page h3,
 scores-page h2 {
     position: relative;
-    top: 180px;
+    top: 140px;
     text-align: center;
     color: rgb(31, 27, 39);
 }
+
+
+/* high scores table */
+
+.wraper-table {
+    position: relative;
+    top: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 50vh;
+    overflow-y: scroll;
+}
+
+table {
+    table-layout: fixed;
+}
+
+table,
+td,
+th {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: .5em .5em;
+    text-align: center;
+}
+
+thead {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+thead tr {
+    background-color: #283238;
+}
+
+tbody tr {
+    transition: all .125s ease-in-out;
+}
+
+tbody th {
+    background-color: #e7efff;
+}
+
+tr {
+    background-color: #607E8B;
+}
+
+tr:nth-child(2n) {
+    background-color: #79909D;
+}
+
+
+/* tbody tr:hover {
+    background-color: #ffff00;
+    cursor: pointer;
+} */
+
+.nameCollum {
+    min-width: 150px;
+}
+
+
+/* beautiful scroll bar */
+
+
+/* Works on Firefox */
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(70, 2, 64) orange;
+}
+
+
+/* Works on Chrome, Edge, and Safari */
+
+
+/* @media only screen and(min-width: 1024px) { */
+
+
+/* Works on Firefox */
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(70, 2, 64) orange;
+}
+
+
+/* Works on Chrome, Edge, and Safari */
+
+*::-webkit-scrollbar {
+    width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+    background: orange;
+    border-radius: 20px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: rgb(70, 2, 64);
+    border-radius: 20px;
+    border: 3px solid orange;
+}
+
+
+/* } */
