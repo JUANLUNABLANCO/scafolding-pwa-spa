@@ -45,10 +45,10 @@ describe('Form Component Unit Testing: ', () => {
         assert.equal(listOfScores.length, 5);
         assert.deepEqual(listOfScores, [
             { nickName: 'JohnMoon', highScore: 789 },
-            { nickName: 'Alvaro', highScore: 1 },
+            { nickName: 'Moon', highScore: 456 },
             { nickName: 'John', highScore: 123 },
             { nickName: 'Morata', highScore: 2 },
-            { nickName: 'Moon', highScore: 456 }
+            { nickName: 'Alvaro', highScore: 1 }
         ]);
     });
     it('Vamos a ver los puntos de un individuo', () => {
@@ -83,10 +83,10 @@ describe('Form Component Unit Testing: ', () => {
         assert.equal(listOfScores.length, 5);
         assert.deepEqual(listOfScores, [
             { nickName: 'JohnMoon', highScore: 789 },
-            { nickName: 'Alvaro', highScore: 1 },
+            { nickName: 'Moon', highScore: 456 },
             { nickName: 'John', highScore: 123 },
             { nickName: 'Morata', highScore: 2 },
-            { nickName: 'Moon', highScore: 456 }
+            { nickName: 'Alvaro', highScore: 1 }
         ]);
 
         // 2. update john a un numero menor, no debería actualizarlo
@@ -95,10 +95,10 @@ describe('Form Component Unit Testing: ', () => {
         assert.equal(listOfScores.length, 5);
         assert.deepEqual(listOfScores, [
             { nickName: 'JohnMoon', highScore: 789 },
-            { nickName: 'Alvaro', highScore: 1 },
+            { nickName: 'Moon', highScore: 456 },
             { nickName: 'John', highScore: 123 },
             { nickName: 'Morata', highScore: 2 },
-            { nickName: 'Moon', highScore: 456 }
+            { nickName: 'Alvaro', highScore: 1 }
         ]);
 
         // 2. update john a un numero mayor ahora si lo actualiza
@@ -106,11 +106,11 @@ describe('Form Component Unit Testing: ', () => {
         listOfScores = ScoresService.getAll();
         assert.equal(listOfScores.length, 5);
         assert.deepEqual(listOfScores, [
-            { nickName: 'JohnMoon', highScore: 789 },
-            { nickName: 'Alvaro', highScore: 1 },
             { nickName: 'John', highScore: 10000 },
+            { nickName: 'JohnMoon', highScore: 789 },
+            { nickName: 'Moon', highScore: 456 },
             { nickName: 'Morata', highScore: 2 },
-            { nickName: 'Moon', highScore: 456 }
+            { nickName: 'Alvaro', highScore: 1 },
         ]);
 
         // 3 borrar john 
@@ -119,9 +119,11 @@ describe('Form Component Unit Testing: ', () => {
         assert.equal(listOfScores.length, 4);
         assert.deepEqual(listOfScores, [
             { nickName: 'JohnMoon', highScore: 789 },
-            { nickName: 'Alvaro', highScore: 1 },
+            { nickName: 'Moon', highScore: 456 },
             { nickName: 'Morata', highScore: 2 },
-            { nickName: 'Moon', highScore: 456 }
+            { nickName: 'Alvaro', highScore: 1 },
+
+
         ]);
 
         // si no está devolverá null
@@ -136,14 +138,3 @@ describe('Form Component Unit Testing: ', () => {
 
     });
 });
-// describe('Acceso de Usuario: ', () => {
-//     it('anotemos un user loged: ALAVRO', () => {
-//         ScoresService.clearAll();
-//         ScoresService.setLogedUser('ALVARO');
-//         const currentUserLoged = ScoresService.getLogerUser();
-//         console.log('ALVARO =', currentUserLoged);
-//         assert.equal('ALVARO', currentUserLoged);
-
-//     });
-
-// });
