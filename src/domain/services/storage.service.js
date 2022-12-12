@@ -4,7 +4,7 @@ const setLogedUser = (nickName) => {
     Storage.setItem('currentUserLoged', nickName);
 }
 const getLogerUser = () => {
-    return Number(Storage.getItem('currentUserLoged'));
+    return Storage.getItem('currentUserLoged');
 }
 const set = (nickName, newScore) => {
     // console.log('TIPO: ', typeof newScore);
@@ -43,13 +43,13 @@ const clearAll = () => {
 const getAll = () => {
     var arrayKeys = Storage.getAllItems();
     var users = [];
-    console.log("### ARRAY Names: ", arrayKeys);
+    // console.log("### ARRAY Names: ", arrayKeys);
 
 
     for (var i = 0; i < arrayKeys.length; i++) {
         if (arrayKeys[i] != 'currentUserLoged') {
             let userNickName = arrayKeys[i];
-            console.log('arraykeys[i]=', arrayKeys[i]);
+            // console.log('arraykeys[i]=', arrayKeys[i]);
             let userHighScore = Number(Storage.getItem(arrayKeys[i]));
             let oneUser = {
                 nickName: userNickName,
@@ -58,8 +58,10 @@ const getAll = () => {
             users.push(oneUser);
         }
     }
-    console.log('#### users: ', users);
-    return users;
+    const orderlyUsersByScores = users.sort(((a, b) => a.highScore - b.highScore));
+    const orderlyUsersByHighScore = [...orderlyUsersByScores].reverse();
+    // console.log('#### orderly users: ', orderlyUsersByHighScore);
+    return orderlyUsersByHighScore;
 
 }
 const getObjectGame = (key, value) => {
