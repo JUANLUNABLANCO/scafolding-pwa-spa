@@ -1,5 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 @import url(https://fonts.googleapis.com/css?family=Concert+One);
+
 /* PWA - single page app - NO FRAMEWORKS */
 
 
@@ -132,6 +133,8 @@ h1 {
     font-size: 5rem;
     font-weight: 900;
 }
+
+
 /* menu mobile first */
 
 label.sandwich {
@@ -331,11 +334,13 @@ label.sandwich {
     cursor: default;
     color: #7a3d3d
 }
+
 home-page h3,
 home-page h2 {
     text-align: center;
     color: rgb(31, 27, 39);
 }
+
 home-page h3,
 home-page h2 {
     text-align: center;
@@ -357,6 +362,7 @@ home-page h2 {
 
 
 /* formName  */
+
 .btn {
     display: inline-block;
     *display: inline;
@@ -635,6 +641,8 @@ input-control {
         flex-direction: column;
     }
 }
+
+
 /* the Game ****** */
 
 
@@ -804,6 +812,7 @@ svg {
         margin: 3rem;
     }
 }
+
 scores-page h1 {
     animation: glow 10s ease-in-out infinite;
 }
